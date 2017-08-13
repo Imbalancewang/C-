@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "abstract_base_class/abstract_base_class.cpp"
@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "BrassPlus::BrassPlus(const Brass &amp;ba,double ml,double r)"
+            landmarkName = "BrassPlus::BrassPlus(const string &amp;s,long an,double bal,double ml,double r)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -51,7 +51,7 @@ void Brass::withdraw(double amt)
     else
         cout<<"cancelled"<<endl;
 }
-void Brass::ViewAcct()const
+void Brass::ViewAcct() const
 {
     Formatting f=SetFormat();
     cout<<"Brass client: "<<FullName()<<endl;
@@ -73,6 +73,34 @@ BrassPlus::BrassPlus(const Brass &ba,double ml,double r) : AcctABC(ba)
 }
 void BrassPlus::ViewAcct() const
 {
-    Formatting
+    Formatting f=SetFormat();
+    cout<<"client: "<<FullName()<<endl;
+    cout<<"acctnum: "<<AcctNum()<<endl;
+    cout<<"balance: "<<Balance()<<endl;
+    cout<<"maximum loan: "<<maxloan<<endl;
+    cout<<"owe to bank: "<<owesbank<<endl;
+    cout.precision(3);
+    cout<<"loan rate"<<rate*100<<"%"<<endl;
+    Restore(f);
 }
+void BrassPlus::withdraw(double amt)
+{
+    Formatting f=SetFormat();
+    double bal=Balance();
+    if(amt<=bal)
+        AcctABC::withdraw(amt);
+    else if(amt<=bal+maxloan-owesbank)
+    {
+        double advance=amt-bal;
+        owesbank+=advance*(1.0+rate);
+        cout<<"bank advance: "<<advance<<endl;
+        cout<<"finance charge: "<<advance*rate<<endl;
+        Deposit(advance);
+        AcctABC::withdraw(amt);
+    }
+    else
+        cout<<"something must be wrong"<<endl;
+    Restore(f);
+}
+
 
